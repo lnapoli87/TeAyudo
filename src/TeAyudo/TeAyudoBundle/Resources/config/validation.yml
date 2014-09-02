@@ -1,0 +1,6 @@
+TeAyudo\TeAyudoBundle\Entity\User:
+properties:
+name:
+- NotBlank: ~
+password:
+- NotBlank: ~

@@ -1,0 +1,3 @@
+te_ayudo:
+    resource: "@TeAyudoBundle/Resources/config/routing.yml"
+    prefix:   /

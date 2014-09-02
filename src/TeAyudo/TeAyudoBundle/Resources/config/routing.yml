@@ -1,0 +1,36 @@
+_welcome:
+    path: /home
+    defaults: { _controller: TeAyudoBundle:Index:index }
+    
+_mainView:
+    path:     /main
+    defaults: { _controller: TeAyudoBundle:MainView:show }
+    
+_creation:
+    path:     /create
+    defaults: { _controller: TeAyudoBundle:Create:show }
+    
+_admin:
+    path:     /admin
+    defaults: { _controller: TeAyudoBundle:Admin:index }
+    
+_cycles:
+    path:     /myCycles
+    defaults: { _controller: TeAyudoBundle:MyCycles:show }
+    
+_userAccount:
+    path:     /myAccount
+    defaults: { _controller: TeAyudoBundle:MyAccount:show }
+    
+_viewPublication:
+    path:     /publication
+    defaults: { _controller: TeAyudoBundle:Publication:show }
+    
+login:
+    path: /login
+    defaults: { _controller: TeAyudoBundle:Index:index }
+login_check:
+    path: /login_check
+logout:
+    path: /logout
+    defaults: { _controller: TeAyudoBundle:Index:index }

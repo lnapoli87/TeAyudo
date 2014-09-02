@@ -1,0 +1,36 @@
+{% extends 'TeAyudoBundle:Default:base.html.twig' %} 
+
+{% block rightMenu%} 
+<form action="{{ path('login_check') }}" method="post">
+	<h2 class="form-signin-heading">Ingresar</h2>
+	{% if error %}
+		<div class="error">
+			<h5>{{ error.message }}</h5>
+		</div>
+	{% endif %}
+	<input type="text" id="username" name="_username" value="{{ last_username }}" placeholder="Email" class="form-control registration-input"/>
+ 	<input type="password" id="password" name="_password" placeholder="Contraseña" class="form-control registration-input"/> 
+	<input type="hidden" name="_target_path" value="/main" />
+	<button type="submit" class="btn btn-primary">Entrar</button>
+</form>
+
+{% endblock %} 
+
+{%block content %} 
+{{include('TeAyudoBundle:home:indexCarousel.html.twig') }}
+
+{{ form_start(registrationForm) }} 
+	<h2 class="form-signin-heading">Regístrese</h2>
+	{% if registerError %}
+		<div class="error">
+			<h5>{{ registerError }}</h5>
+		</div>
+	{% endif %}
+	{{ form_widget(registrationForm.name, 
+		{'attr': {'placeholder': 'Nombre Completo', 'class': 'registration-input'} }) }} 
+	{{ form_widget(registrationForm.email, {'attr': {'placeholder': 'Email','class': 'registration-input'} }) }} 
+	{{ form_widget(registrationForm.password, {'attr': {'placeholder':'Contraseña', 'class': 'registration-input'} }) }} 
+	{{ form_widget(registrationForm.passwordRepeat, {'attr': {'placeholder':'Repita la contraseña', 'class': 'registration-input'} }) }} 
+{{ form_end(registrationForm) }}
+
+{% endblock %}

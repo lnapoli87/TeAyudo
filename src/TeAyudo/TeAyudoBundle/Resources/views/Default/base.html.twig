@@ -1,0 +1,44 @@
+<!DOCTYPE unspecified PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="es">
+<head>
+<title>{{ pageTitle }}</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- css -->
+<link rel="stylesheet"
+	href="{{ asset('bundles/TeAyudo/css/base.css') }}" />
+<link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet"
+	media="screen">
+{% include 'BraincraftedBootstrapBundle::ie8-support.html.twig' %}
+<!-- javascript -->
+<script src="{{ asset('js/jquery.js') }}"></script>
+<script src="{{ asset('js/bootstrap.js') }}"></script>
+</head>
+
+<body role="document">
+	<div class="teAyudoViewport">
+		<div class="mainContainer container theme-showcase jumbotron">
+			<div class="row show-grid">
+				<div class="col-md-4">
+					<div class="logo img-thumbnail">
+						<img alt="teayudo.org"
+							src="{{ asset('bundles/TeAyudo/images/te-ayudo-logo.png') }}">
+					</div>
+				</div>
+				<div class="col-md-4"></div>
+				{# <div class="span1">#} {# <div class="middleHeader btn btn-primary
+				btn-lg">MiddleButton</div>#} {# </div>#}
+
+				<div class="col-md-4">
+					<div class="text-right">{% block rightMenu %} {% endblock %}</div>
+				</div>
+
+			</div>
+			<div class="content">{% block content %} {% endblock %}</div>
+
+			<div class="footer">&copy; lucasnapoli 2014</div>
+		</div>
+
+</body>
+</html>
