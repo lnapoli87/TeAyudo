@@ -14,6 +14,9 @@
 <!-- javascript -->
 <script src="{{ asset('js/jquery.js') }}"></script>
 <script src="{{ asset('js/bootstrap.js') }}"></script>
+<script type="text/javascript"
+      src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAU6bgUvjx3W-janq9XAA_ENl_fKuo8pXA&sensor=true">
+</script>
 </head>
 
 <body role="document">
@@ -26,10 +29,8 @@
 							src="{{ asset('bundles/TeAyudo/images/te-ayudo-logo.png') }}">
 					</div>
 				</div>
-				<div class="col-md-4"></div>
-				{# <div class="span1">#} {# <div class="middleHeader btn btn-primary
-				btn-lg">MiddleButton</div>#} {# </div>#}
-
+				<div class="col-md-4">{% block middleAction %} {% endblock %}</div>
+				
 				<div class="col-md-4">
 					<div class="text-right">{% block rightMenu %} {% endblock %}</div>
 				</div>

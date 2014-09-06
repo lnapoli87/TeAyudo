@@ -110,31 +110,4 @@ class Cycle {
     {
         return $this->coords;
     }
-
-    /**
-     * Set active
-     *
-     * @param boolean $active
-     * @return Cycle
-     */
-    public function setActive($active)
-    {
-        $this->active = $active;
-
-        return $this;
-    }
-
-    /**
-     * Get active
-     *
-     * @return boolean 
-     */
-    public function getActive()
-    {
-        return $this->active;
-    }
-    
-    public function getDateString(){
-    	return 'holaaa';
-    }
 }

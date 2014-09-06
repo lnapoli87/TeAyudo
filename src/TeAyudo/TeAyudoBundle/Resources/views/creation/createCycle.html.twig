@@ -1,0 +1,50 @@
+{% extends 'TeAyudoBundle:Default:base.html.twig' %} 
+{% block middleAction %} 
+{% endblock %}
+
+{% block rightMenu%} 
+<div class="headHome">
+	<h2 class="form-signin-heading">Bienvenido</h2>
+	<h4>{{ username }}</h5>
+</div>
+<ul class="nav nav-pills mainMenu">
+	 <li class="active"><a href="main">Inicio</a></li>
+	 <li><a	href="myCycles">Mis Ciclos</a></li>
+	 <li><a href="myAccount">Mi Cuenta</a>
+	 </li>
+</ul>
+<span class="headHome"><a href="logout">Salir</a></span>
+{% endblock %} 
+
+{%block content %} 
+	
+<div class="container">
+	<div class="row">
+        <div class="container">
+          	{{ form_start(cycleForm) }} 
+				<h2 class="form-signin-heading">Comenzar un Nuevo Ciclo</h2>
+				{% if error %}
+					<div class="error">
+						<h5>{{ error }}</h5>
+					</div>
+				{% endif %}
+				{% if successMessage %}
+					<div class="success">
+						<h5>{{ successMessage }}</h5>
+					</div>
+				{% endif %}
+				{{ form_widget(cycleForm.cycleType) }}
+				{{ form_widget(cycleForm.title, 
+					{'attr': {'placeholder': 'Título', 'class': 'registration-input'} }) }} 
+				{{ form_widget(cycleForm.description, {'attr': {'placeholder': 'Ingrese la descripción del nuevo Ciclo','class': 'registration-input', 'rows': '10'} }) }}
+				<h2 class="form-signin-heading">Ingrese la Ubicación</h2> 
+				<div id="map_canvas" style="margin-bottom:30px;"></div>
+				<a href="main" class="registration-input">Volver</a>
+			{{ form_end(cycleForm) }}  	
+        </div>
+  </div>
+</div>
+<script type="text/javascript" src="{{ asset('bundles/TeAyudo/js/main.js') }}">
+</script>
+
+{% endblock %}

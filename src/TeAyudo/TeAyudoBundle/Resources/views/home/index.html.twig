@@ -1,5 +1,5 @@
 {% extends 'TeAyudoBundle:Default:base.html.twig' %} 
-
+{% block middleAction %} {% endblock %}
 {% block rightMenu%} 
 <form action="{{ path('login_check') }}" method="post">
 	<h2 class="form-signin-heading">Ingresar</h2>
@@ -18,19 +18,21 @@
 
 {%block content %} 
 {{include('TeAyudoBundle:home:indexCarousel.html.twig') }}
-
-{{ form_start(registrationForm) }} 
-	<h2 class="form-signin-heading">Regístrese</h2>
-	{% if registerError %}
-		<div class="error">
-			<h5>{{ registerError }}</h5>
-		</div>
-	{% endif %}
-	{{ form_widget(registrationForm.name, 
-		{'attr': {'placeholder': 'Nombre Completo', 'class': 'registration-input'} }) }} 
-	{{ form_widget(registrationForm.email, {'attr': {'placeholder': 'Email','class': 'registration-input'} }) }} 
-	{{ form_widget(registrationForm.password, {'attr': {'placeholder':'Contraseña', 'class': 'registration-input'} }) }} 
-	{{ form_widget(registrationForm.passwordRepeat, {'attr': {'placeholder':'Repita la contraseña', 'class': 'registration-input'} }) }} 
-{{ form_end(registrationForm) }}
-
+{% if not registrationSuccess %}
+	{{ form_start(registrationForm) }} 
+		<h2 class="form-signin-heading">Regístrese</h2>
+		{% if registerError %}
+			<div class="error">
+				<h5>{{ registerError }}</h5>
+			</div>
+		{% endif %}
+		{{ form_widget(registrationForm.name, 
+			{'attr': {'placeholder': 'Nombre Completo', 'class': 'registration-input'} }) }} 
+		{{ form_widget(registrationForm.email, {'attr': {'placeholder': 'Email','class': 'registration-input', 'autocomplete': 'off'} }) }} 
+		{{ form_widget(registrationForm.password, {'attr': {'placeholder':'Contraseña', 'class': 'registration-input', 'autocomplete': 'off'} }) }} 
+		{{ form_widget(registrationForm.passwordRepeat, {'attr': {'placeholder':'Repita la contraseña', 'class': 'registration-input'} }) }} 
+	{{ form_end(registrationForm) }}
+{% else %}
+	{{registrationSuccess}}
+{% endif %}
 {% endblock %}

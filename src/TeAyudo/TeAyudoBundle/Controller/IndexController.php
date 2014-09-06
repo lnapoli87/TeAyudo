@@ -15,6 +15,7 @@ class IndexController extends Controller {
 	protected $error = '';
 	protected $registerError = '';
 	protected $lastUsername = '';
+	protected $registrationSuccess= '';
 	
 	public function indexAction(Request $request) {
 		return $this->render ( 'TeAyudoBundle:home:index.html.twig', array (
@@ -24,7 +25,8 @@ class IndexController extends Controller {
 				'last_username' => $this->lastUsername,
 				'error' => $this->error,
 				'pageTitle' => 'Ingrese sus credenciales',
-				'registerError' => $this->getRegisterError()
+				'registerError' => $this->getRegisterError(),
+				'registrationSuccess'=>$this->getRegistrationSuccess()
 		) );
 	}
 
@@ -49,7 +51,7 @@ class IndexController extends Controller {
 						$em = $this->getDoctrine()->getEntityManager();
 						$em->persist($newUser);
 						$em->flush($newUser);
-						$this->redirect("/registration_success");
+						$this->setRegistrationSuccess('Se ha registrado correctamente su usuario. Ahora puede ingresar con sus credenciales.');
 					} catch (DBALException $e) {
 						$this->setRegisterError('ERROR: ya existe un usuario con el mismo Email');
 					}
@@ -110,6 +112,21 @@ class IndexController extends Controller {
 		$this->registerError = $registerError;
 		return $this;
 	}
+	public function getError() {
+		return $this->error;
+	}
+	public function setError($error) {
+		$this->error = $error;
+		return $this;
+	}
+	public function getRegistrationSuccess() {
+		return $this->registrationSuccess;
+	}
+	public function setRegistrationSuccess($registrationSuccess) {
+		$this->registrationSuccess = $registrationSuccess;
+		return $this;
+	}
+	
 		
 
 }

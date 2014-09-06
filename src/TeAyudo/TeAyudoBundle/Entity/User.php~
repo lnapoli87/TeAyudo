@@ -302,34 +302,4 @@ public function getRoles()
 	}
 	
 
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->cycles = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-    /**
-     * Add cycles
-     *
-     * @param \TeAyudo\TeAyudoBundle\Entity\Cycle $cycles
-     * @return User
-     */
-    public function addCycle(\TeAyudo\TeAyudoBundle\Entity\Cycle $cycles)
-    {
-        $this->cycles[] = $cycles;
-
-        return $this;
-    }
-
-    /**
-     * Remove cycles
-     *
-     * @param \TeAyudo\TeAyudoBundle\Entity\Cycle $cycles
-     */
-    public function removeCycle(\TeAyudo\TeAyudoBundle\Entity\Cycle $cycles)
-    {
-        $this->cycles->removeElement($cycles);
-    }
 }
