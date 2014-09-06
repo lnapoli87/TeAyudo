@@ -1,0 +1,33 @@
+{% extends 'TeAyudoBundle:Default:base.html.twig' %} 
+{% block middleAction %} 
+{% endblock %}
+
+{% block rightMenu%} 
+<div class="headHome">
+	<h2 class="form-signin-heading">Bienvenido</h2>
+	<h4>{{ username }}</h5>
+</div>
+<ul class="nav nav-pills mainMenu">
+	 <li class="active"><a href="main">Inicio</a></li>
+	 <li><a	href="myCycles">Mis Ciclos</a></li>
+	 <li><a href="myAccount">Mi Cuenta</a>
+	 </li>
+</ul>
+<span class="headHome"><a href="logout">Salir</a></span>
+{% endblock %} 
+
+{%block content %} 
+{% if error %}	
+{% else %}
+	<div class="container">
+		<div class="row">
+	        <div class="container">
+					<h2 class="form-signin-heading">{{ cycle.title }}</h2>
+	        </div>
+	  </div>
+	</div>
+{% endif %}
+<script type="text/javascript" src="{{ asset('bundles/TeAyudo/js/main.js') }}">
+</script>
+
+{% endblock %}
