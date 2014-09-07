@@ -19,13 +19,27 @@
 {%block content %} 
 {% if error %}	
 {% else %}
+{% for cycle in resultCycle %}
 	<div class="container">
+		<h2 class="form-signin-heading">{{ cycle.title }}</h2>
 		<div class="row">
-	        <div class="container">
-					<h2 class="form-signin-heading">{{ cycle.title }}</h2>
+	        <div class="container col-md-6 panel-body">
+	        	<h3>Fecha</h3>
+				<p>{{ cycle.dateString }}</p>
+				<h3>Descripción</h3>
+				<p>{{ cycle.description }}</p>
+				<h3>Estado</h3>
+				<p>{{ cycle.ended }}</p>
+				<h3>@Usuario</h3>
+				<p>{{ cycle.user.name }}</p>					
+	        </div>
+	        <div id="map_canvas" class="col-md-6">
+					
+					
 	        </div>
 	  </div>
 	</div>
+{% endfor %}
 {% endif %}
 <script type="text/javascript" src="{{ asset('bundles/TeAyudo/js/main.js') }}">
 </script>

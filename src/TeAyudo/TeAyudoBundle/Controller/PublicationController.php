@@ -15,24 +15,24 @@ class PublicationController extends Controller
     {
     	$this->setUser($this->get('security.context')->getToken()->getUser());
     	$userName = $this->getUser()->getName();
-    	$this->findCycleById();
-        return $this->render('TeAyudoBundle:Default:index.html.twig', 
+    	$this->findCycleById($cycleId);
+        return $this->render('TeAyudoBundle:publication:publicationView.html.twig', 
         		array('pageTitle' => 'TeAyudo.org',
         				'username' => $userName,
 						'error'=>$this->error,
-        				'cycle'=>$this->getCycle()       				
+        				'resultCycle'=>$this->getCycle()       				
         		));
     }
     
     
-    public function findCycleById(){
+    public function findCycleById($cycleId){
     	try{
 	    	$em = $this->getDoctrine()->getManager();
 	    	$query = $em->createQuery(
 	    			'SELECT c
 	    			FROM TeAyudo\TeAyudoBundle\Entity\Cycle c
-	    			WHERE id= :cycleId'
-    	);
+	    			WHERE c.id= :cycleId'
+    	)->setParameter('cycleId', $cycleId);
     	
     	$this->cycle = $query->getResult();
     	} catch (DBALException $e) {

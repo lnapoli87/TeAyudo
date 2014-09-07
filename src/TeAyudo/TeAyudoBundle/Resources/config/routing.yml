@@ -11,8 +11,8 @@ _creation:
     defaults: { _controller: TeAyudoBundle:Create:show }
     
 _publication:
-    path:     /publication/{id}
-    defaults: {_controller: TeAyudoBundle:PublicationView:show}
+    path:     /publication/{cycleId}
+    defaults: {_controller: TeAyudoBundle:Publication:show}
     
 _admin:
     path:     /admin
