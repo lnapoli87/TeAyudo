@@ -21,7 +21,7 @@ class MainViewController extends Controller
         		array('pageTitle' => 'TeAyudo.org', 
         				'username' => $userName,
         				'lastCycles'=>$this->getLastCycles(),
-        				'lastHelpOfferedCycles'=>$this->getLastCycles(),
+        				'lastHelpOfferedCycles'=>$this->getLastHelpOfferedCycles(),
         				'lastHelpNeededCycles'=>$this->getLastHelpNeededCycles()
         		));
     }

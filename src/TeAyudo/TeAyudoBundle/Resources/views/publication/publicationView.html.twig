@@ -31,7 +31,10 @@
 				<h3>Estado</h3>
 				<p>{{ cycle.ended }}</p>
 				<h3>@Usuario</h3>
-				<p>{{ cycle.user.name }}</p>					
+				<p>{{ cycle.user.name }}</p>	
+				<script type="text/javascript">
+					var cycleCoords = "{{ cycle.coords }}";
+				</script>				
 	        </div>
 	        <div id="map_canvas" class="col-md-6">
 					
@@ -41,7 +44,7 @@
 	</div>
 {% endfor %}
 {% endif %}
-<script type="text/javascript" src="{{ asset('bundles/TeAyudo/js/main.js') }}">
+<script type="text/javascript" src="{{ asset('bundles/TeAyudo/js/publicationView.js') }}">
 </script>
 
 {% endblock %}
