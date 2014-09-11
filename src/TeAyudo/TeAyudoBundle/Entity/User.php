@@ -56,6 +56,11 @@ class User implements UserInterface, \Serializable{
 	/**
 	 * @ORM\Column(type="boolean", nullable=false)
 	 */
+	protected $active;
+	
+	/**
+	 * @ORM\Column(type="boolean", nullable=false)
+	 */
 	protected $admin;
 	
 	/**
@@ -332,4 +337,12 @@ public function getRoles()
     {
         $this->cycles->removeElement($cycles);
     }
+	public function getActive() {
+		return $this->active;
+	}
+	public function setActive($active) {
+		$this->active = $active;
+		return $this;
+	}
+	
 }

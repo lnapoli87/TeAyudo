@@ -102,6 +102,7 @@ class IndexController extends Controller {
 		$newUser->setName($registrationFormData->getName());
 		$newUser->setPassword($registrationFormData->getPassword());
 		$newUser->setEmail($registrationFormData->getEmail());
+		$newUser->setActive(false);
 		
 		return $newUser;
 	}
