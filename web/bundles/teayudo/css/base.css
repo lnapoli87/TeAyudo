@@ -98,6 +98,7 @@ div.bhoechie-tab-menu div.list-group>a.active:after{
 div.bhoechie-tab-content{
   background-color: #ffffff;
   /* border: 1px solid #eeeeee; */
+  padding-left: 20px;
   padding-top: 10px;
 }
 
@@ -140,12 +141,4 @@ position: relative;
 }
 .registerLbl{
 	margin-top: 0;
-}
-.list-group-item-text{
-	text-overflow: ellipsis;
-	white-space: nowrap;
-	overflow: hidden;
-}
-.input-group{
-	margin-bottom:5px;
 }
