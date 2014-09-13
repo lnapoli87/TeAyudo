@@ -16,32 +16,23 @@
 
 {% endblock %} 
 
-{%block content %}
-<div class="page-header">
-	<h2>¿Qué es TeAyudo.org?</h2>
-</div>
-<div class="row">
-	<div class="col-md-8"> 
-		{{include('TeAyudoBundle:home:indexCarousel.html.twig') }}
-	</div>
-	<div class="col-md-4">
-		{% if not registrationSuccess %}
-			{{ form_start(registrationForm) }} 
-				<h2 class="form-signin-heading registerLbl">Regístrese</h2>
-				{% if registerError %}
-					<div class="error">
-						<h5>{{ registerError }}</h5>
-					</div>
-				{% endif %}
-				{{ form_widget(registrationForm.name, 
-					{'attr': {'placeholder': 'Nombre Completo', 'class': 'registration-input'} }) }} 
-				{{ form_widget(registrationForm.email, {'attr': {'placeholder': 'Email','class': 'registration-input', 'autocomplete': 'off'} }) }} 
-				{{ form_widget(registrationForm.password, {'attr': {'placeholder':'Contraseña', 'class': 'registration-input', 'autocomplete': 'off'} }) }} 
-				{{ form_widget(registrationForm.passwordRepeat, {'attr': {'placeholder':'Repita la contraseña', 'class': 'registration-input'} }) }} 
-			{{ form_end(registrationForm) }}
-		{% else %}
-			{{registrationSuccess}}
+{%block content %} 
+{{include('TeAyudoBundle:home:indexCarousel.html.twig') }}
+{% if not registrationSuccess %}
+	{{ form_start(registrationForm) }} 
+		<h2 class="form-signin-heading">Regístrese</h2>
+		{% if registerError %}
+			<div class="error">
+				<h5>{{ registerError }}</h5>
+			</div>
 		{% endif %}
-	</div>
-</div>
+		{{ form_widget(registrationForm.name, 
+			{'attr': {'placeholder': 'Nombre Completo', 'class': 'registration-input'} }) }} 
+		{{ form_widget(registrationForm.email, {'attr': {'placeholder': 'Email','class': 'registration-input', 'autocomplete': 'off'} }) }} 
+		{{ form_widget(registrationForm.password, {'attr': {'placeholder':'Contraseña', 'class': 'registration-input', 'autocomplete': 'off'} }) }} 
+		{{ form_widget(registrationForm.passwordRepeat, {'attr': {'placeholder':'Repita la contraseña', 'class': 'registration-input'} }) }} 
+	{{ form_end(registrationForm) }}
+{% else %}
+	{{registrationSuccess}}
+{% endif %}
 {% endblock %}
