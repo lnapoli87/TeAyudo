@@ -20,25 +20,27 @@
 {% if error %}	
 {% else %}
 {% for cycle in resultCycle %}
-	<div class="container">
+	<div class="container createPageJumbo">
 		<h2 class="form-signin-heading">{{ cycle.title }}</h2>
 		<div class="row">
 	        <div class="container col-md-6 panel-body">
-	        	<h3>Fecha</h3>
+	        	<p class="text-primary">Fecha</p>
 				<p>{{ cycle.dateString }}</p>
-				<h3>Descripción</h3>
+				<p class="text-primary">Descripción</p>
 				<p>{{ cycle.description }}</p>
-				<h3>Estado</h3>
-				<p>{{ cycle.ended }}</p>
-				<h3>@Usuario</h3>
+				<p class="text-primary">Estado</p>
+				{% if cycle.ended == true %}
+					<p>Terminado</p>
+				{% else %}
+					<p>Activo</p>
+				{% endif %}
+				<p class="text-primary">@Usuario</p>
 				<p>{{ cycle.user.name }}</p>	
 				<script type="text/javascript">
 					var cycleCoords = "{{ cycle.coords }}";
 				</script>				
 	        </div>
-	        <div id="map_canvas" class="col-md-6">
-					
-					
+	        <div id="map_canvas" class="col-md-6 map-middle-page">
 	        </div>
 	  </div>
 	</div>
