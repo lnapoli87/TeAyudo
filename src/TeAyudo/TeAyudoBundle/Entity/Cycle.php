@@ -27,6 +27,10 @@ class Cycle {
 	 */
 	protected $title;
 	/**
+	 * @ORM\Column(type="string", length=500, nullable=false)
+	 */
+	protected $contactData;
+	/**
 	 * @ORM\ManyToOne(targetEntity="User", cascade={"all"}, fetch="EAGER")
 	 */
 	protected $user;
@@ -137,4 +141,12 @@ class Cycle {
     public function getDateString(){
     	return 'holaaa';
     }
+	public function getContactData() {
+		return $this->contactData;
+	}
+	public function setContactData($contactData) {
+		$this->contactData = $contactData;
+		return $this;
+	}
+	
 }

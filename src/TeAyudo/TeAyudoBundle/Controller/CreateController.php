@@ -35,6 +35,7 @@ class CreateController extends Controller
     		'choices'  => array('Necesito', 'Ofrezco')
 		))
     	->add ( 'title', 'text' )
+    	->add ( 'contactData', 'text' )
     	->add ( 'description', 'textarea' )
     	->add ( 'save', 'submit', array ('label' => 'Empezar Ciclo' )
     	)->getForm ();

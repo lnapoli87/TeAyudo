@@ -36,10 +36,12 @@
 					{% endif %}
 					{{ form_widget(cycleForm.cycleType) }}
 					{{ form_widget(cycleForm.title, 
-						{'attr': {'placeholder': 'Título', 'class': 'registration-input'} }) }} 
-					{{ form_widget(cycleForm.description, {'attr': {'placeholder': 'Ingrese la descripción del nuevo Ciclo','class': 'registration-input', 'rows': '10'} }) }}
+						{'attr': {'placeholder': 'Título', 'class': 'registration-input'} }) }}
+					{{ form_widget(cycleForm.contactData, 
+						{'attr': {'placeholder': 'Datos de contacto', 'class': 'registration-input'} }) }} 
+					{{ form_widget(cycleForm.description, {'attr': {'placeholder': 'Ingrese la descripción del nuevo Ciclo','class': 'registration-input', 'rows': '21'} }) }}
 					</div>
-					<div class="col-md-6">
+					<div class="col-md-6 map-middle-page">
 					<h3 class="form-signin-heading">Ingrese la Ubicación</h3> 
 					<input type="hidden" name="hiddenLatLng" id="hiddenLatLng" value=""/>
 					<input class="input-searchBox registration-input" type="text" id="searchBoxInput"/>
