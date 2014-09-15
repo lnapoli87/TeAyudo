@@ -20,36 +20,35 @@
 	
 <div class="container">
 <h2 class="form-signin-heading">Comenzar un Nuevo Ciclo</h2>
-        <div class="container row">
           	{{ form_start(cycleForm) }}
-          		<div class="col-md-6"> 
-				
-				{% if error %}
-					<div class="error">
-						<h5>{{ error }}</h5>
+          		<div class="container row createPageJumbo">
+	          		<div class="col-md-6"> 
+					
+					{% if error %}
+						<div class="error">
+							<h5>{{ error }}</h5>
+						</div>
+					{% endif %}
+					{% if successMessage %}
+						<div class="success">
+							<h5>{{ successMessage }}</h5>
+						</div>
+					{% endif %}
+					{{ form_widget(cycleForm.cycleType) }}
+					{{ form_widget(cycleForm.title, 
+						{'attr': {'placeholder': 'Título', 'class': 'registration-input'} }) }} 
+					{{ form_widget(cycleForm.description, {'attr': {'placeholder': 'Ingrese la descripción del nuevo Ciclo','class': 'registration-input', 'rows': '10'} }) }}
 					</div>
-				{% endif %}
-				{% if successMessage %}
-					<div class="success">
-						<h5>{{ successMessage }}</h5>
+					<div class="col-md-6">
+					<h3 class="form-signin-heading">Ingrese la Ubicación</h3> 
+					<input type="hidden" name="hiddenLatLng" id="hiddenLatLng" value=""/>
+					<input class="input-searchBox registration-input" type="text" id="searchBoxInput"/>
+					<div id="map_canvas" style="margin-bottom:30px;"></div>
 					</div>
-				{% endif %}
-				{{ form_widget(cycleForm.cycleType) }}
-				{{ form_widget(cycleForm.title, 
-					{'attr': {'placeholder': 'Título', 'class': 'registration-input'} }) }} 
-				{{ form_widget(cycleForm.description, {'attr': {'placeholder': 'Ingrese la descripción del nuevo Ciclo','class': 'registration-input', 'rows': '10'} }) }}
-				</div>
-				<div class="col-md-6">
-				<h3 class="form-signin-heading">Ingrese la Ubicación</h3> 
-				<input type="hidden" name="hiddenLatLng" id="hiddenLatLng" value=""/>
-				<input class="input-searchBox registration-input" type="text" id="searchBoxInput"/>
-				<div id="map_canvas" style="margin-bottom:30px;"></div>
 				</div>
 				<div class="actionFormButtons"><a href="main" class="registration-input">Volver</a>{{ form_widget(cycleForm.save) }}</div> 
 			{{ form_end(cycleForm) }}  	
-        </div>
 </div>
 <script type="text/javascript" src="{{ asset('bundles/TeAyudo/js/createCycle.js') }}"/>			
 </script>
-
 {% endblock %}
