@@ -33,7 +33,11 @@
 				<div class="col-md-6">
 				<h3 class="form-signin-heading">Complete su perfil</h3>
 				Foto
-				<div class="inputWrapper" style="margin-bottom:20px; height: 200px; width: 150px; background-image: url({{ asset('bundles/TeAyudo/images/noprofileimage.jpg') }})">
+				{% if user.photoPath %}
+					<div class="inputWrapper" style="margin-bottom:20px; height: 200px; width: 150px; background-image: url({{ user.photoPath }})">
+				{% else %}
+					<div class="inputWrapper" style="margin-bottom:20px; height: 200px; width: 150px; background-image: url({{ asset('bundles/TeAyudo/images/noprofileimage.jpg') }})">
+				{% endif %}
 	    			{{ form_widget(userForm.file,{'attr':{'class':'fileInput hiddenFile','name':'photoInputFile'}}) }}
 	    		</div>
 				{{ form_widget(userForm.name,{'attr': {'placeholder': 'Nombre Completo', 'class': 'registration-input'} }) }} 

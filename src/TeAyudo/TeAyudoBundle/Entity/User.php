@@ -358,5 +358,17 @@ public function getRoles()
 		return $this;
 	}
 	
+	public function getWebPath()
+	{
+		return null === $this->photoPath
+		? null
+		: $this->getUploadDir().'/'.$this->photoPath;
+	}
+	protected function getUploadDir()
+	{
+		// get rid of the __DIR__ so it doesn't screw up
+		// when displaying uploaded doc/image in the view.
+		return 'uploads/documents';
+	}
 	
 }
