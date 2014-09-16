@@ -151,3 +151,34 @@ position: relative;
 	padding-left: 0px !important;
 	padding-right: 0px !important;
 }
+
+
+/*input type file handling*/
+.inputWrapper {
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    /*Using a background color, but you can use a background image to represent a button*/
+    background-color: #DDF;
+}
+.fileInput {
+    cursor: pointer;
+    height: 100%;
+    position:absolute;
+    top: 0;
+    right: 0;
+    /*This makes the button huge so that it can be clicked on*/
+    font-size:50px;
+}
+.hiddenFile {
+    /*Opacity settings for all browsers*/
+    opacity: 0;
+    -moz-opacity: 0;
+    filter:progid:DXImageTransform.Microsoft.Alpha(opacity=0)
+}
+.inputWrapper:hover {
+    background-color: #FDD;
+}
+.inputWrapper.clicked {
+    background-color: #A66;
+}

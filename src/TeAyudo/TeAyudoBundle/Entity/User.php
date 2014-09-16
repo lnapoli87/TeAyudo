@@ -7,6 +7,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Security\Core\User\UserInterface;
 use TeAyudo\TeAyudoBundle\Entity\Cycle;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 /**
  * @ORM\Entity
  * @ORM\Table(name="user")
@@ -44,12 +45,12 @@ class User implements UserInterface, \Serializable{
 	protected $coords;
 	
 	/**
-	 * @ORM\Column(type="integer", nullable=true)
+	 * @ORM\Column(type="string", length=50, nullable=true)
 	 */
 	protected $telephone;
 	
 	/**
-	 * @ORM\Column(type="integer", nullable=true)
+	 * @ORM\Column(type="string", length=50, nullable=true)
 	 */
 	protected $cellphone;
 	
@@ -67,7 +68,12 @@ class User implements UserInterface, \Serializable{
 	 * @ORM\OneToMany(targetEntity="Cycle", mappedBy="user", cascade={"persist", "remove", "merge"}, orphanRemoval=false)
 	 */
 	protected $cycles;
-
+	
+	/**
+	 * @ORM\Column(type="string", length=255, nullable=true)
+	 */
+	public $photoPath;
+	
     /**
      * Get id
      *
@@ -344,5 +350,13 @@ public function getRoles()
 		$this->active = $active;
 		return $this;
 	}
+	public function getPhotoPath() {
+		return $this->photoPath;
+	}
+	public function setPhotoPath($photoPath) {
+		$this->photoPath = $photoPath;
+		return $this;
+	}
+	
 	
 }
