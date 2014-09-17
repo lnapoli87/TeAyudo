@@ -19,6 +19,11 @@ $(document).ready(function() {
     	e.preventDefault();
     	window.location="./create";
     });
+    
+    $("#seeAll").click(function(e){
+    	e.preventDefault();
+    	window.location="./all";
+    });
 });
 
     var mapOptions = {

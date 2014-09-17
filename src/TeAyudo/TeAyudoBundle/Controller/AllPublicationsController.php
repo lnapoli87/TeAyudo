@@ -6,7 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use TeAyudo\TeAyudoBundle\Entity\User;
 
-class MainViewController extends Controller
+class AllPublicationsController extends Controller
 {
 	protected $lastCycles;
 	protected $lastHelpNeededCycles;
@@ -17,12 +17,12 @@ class MainViewController extends Controller
     	$usr= $this->get('security.context')->getToken()->getUser();
     	$userName = $usr->getName();
     	$this->getCyclesFromDB($usr);
-        return $this->render('TeAyudoBundle:main:main.html.twig', 
+        return $this->render('TeAyudoBundle:publication:allPublications.html.twig', 
         		array('pageTitle' => 'TeAyudo.org', 
         				'username' => $userName,
-        				'lastCycles'=>$this->getLastCycles(),
-        				'lastHelpOfferedCycles'=>$this->getLastHelpOfferedCycles(),
-        				'lastHelpNeededCycles'=>$this->getLastHelpNeededCycles()
+        				'allCycles'=>$this->getLastCycles(),
+        				'offeredCycles'=>$this->getLastHelpOfferedCycles(),
+        				'neededCycles'=>$this->getLastHelpNeededCycles()
         		));
     }
 	public function getCyclesFromDB(User $user){
@@ -32,7 +32,7 @@ class MainViewController extends Controller
 				'SELECT c
     			FROM TeAyudo\TeAyudoBundle\Entity\Cycle c
     			ORDER BY c.date ASC'
-		)->setMaxResults(6);
+		);
 	
 		$this->lastCycles = $query->getResult();
 		
@@ -41,7 +41,7 @@ class MainViewController extends Controller
     			FROM TeAyudo\TeAyudoBundle\Entity\Cycle c
     			WHERE c.cycleType = 0
     			ORDER BY c.date ASC'
-		)->setMaxResults(6);
+		);
 		
 		$this->lastHelpNeededCycles = $query->getResult();
 		
@@ -50,7 +50,7 @@ class MainViewController extends Controller
     			FROM TeAyudo\TeAyudoBundle\Entity\Cycle c
     			WHERE c.cycleType = 1
     			ORDER BY c.date ASC'
-		)->setMaxResults(6);
+		);
 		
 		$this->lastHelpOfferedCycles = $query->getResult();
 	
