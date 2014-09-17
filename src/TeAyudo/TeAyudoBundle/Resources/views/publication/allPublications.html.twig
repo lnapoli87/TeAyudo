@@ -11,9 +11,9 @@
 	<h4>{{ username }}</h5>
 </div>
 <ul class="nav nav-pills mainMenu">
-	 <li class="active"><a href="../main">Inicio</a></li>
-	 <li><a	href="../myCycles">Mis Ciclos</a></li>
-	 <li><a href="../myAccount">Mi Cuenta</a>
+	 <li class="active"><a href="./main">Inicio</a></li>
+	 <li><a	href="./myCycles">Mis Ciclos</a></li>
+	 <li><a href="./myAccount">Mi Cuenta</a>
 	 </li>
 </ul>
 <span class="headHome"><a href="logout">Salir</a></span>
@@ -21,8 +21,8 @@
 
 {%block content %}
 <!-- Nav tabs -->
-<ul class="nav nav-tabs" role="tablist" style="margin-top:30px;">
-  <li class="active"><a id="firstTab" href="#needed" role="tab" data-toggle="tab">Necesitan tu Ayuda</a></li>
+<ul class="nav nav-tabs" role="tablist" style="margin-top:30px;" id="myTab">
+  <li class="active"><a href="#needed" role="tab" data-toggle="tab">Necesitan tu Ayuda</a></li>
   <li><a href="#offered" role="tab" data-toggle="tab">Ofrecen su Ayuda</a></li>
   <li><a href="#all" role="tab" data-toggle="tab">Todos</a></li>
 </ul>
@@ -102,6 +102,6 @@
 
 <script type="text/javascript" src="{{ asset('bundles/TeAyudo/js/allPublications.js') }}"></script>
 <script>
-    $('#firstTab').click();
+$('#myTab a:last').tab('show');
 </script>
 {% endblock %}

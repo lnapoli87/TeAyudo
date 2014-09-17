@@ -189,3 +189,7 @@ position: relative;
 	background-size: 100%; 
 	background-repeat:no-repeat; 
 }
+.seeAllButton{
+	padding: 5px 5px !important; 
+	margin-top:10px;
+}

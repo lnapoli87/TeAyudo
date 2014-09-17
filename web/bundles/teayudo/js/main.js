@@ -20,7 +20,7 @@ $(document).ready(function() {
     	window.location="./create";
     });
     
-    $("#seeAll").click(function(e){
+    $(".seeAllButton").click(function(e){
     	e.preventDefault();
     	window.location="./all";
     });
