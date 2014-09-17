@@ -34,9 +34,9 @@
 				<h3 class="form-signin-heading">Complete su perfil</h3>
 				Foto
 				{% if user.photoPath %}
-					<div class="inputWrapper" style="margin-bottom:20px; height: 200px; width: 200px; background-image: url('{{ user.webPath }}'); background-size: 100%; background-repeat:no-repeat;">
+					<div class="inputWrapper avatar" style="background-image: url('{{ user.webPath }}');">
 				{% else %}
-					<div class="inputWrapper" style="margin-bottom:20px; height: 200px; width: 200px; background-image: url({{ asset('bundles/TeAyudo/images/noprofileimage.jpg') }}); background-size: 100%; background-repeat:no-repeat;">
+					<div class="inputWrapper avatar" style="background-image: url({{ asset('bundles/TeAyudo/images/noprofileimage.jpg') }});">
 				{% endif %}
 	    			{{ form_widget(userForm.file,{'attr':{'class':'fileInput hiddenFile','name':'photoInputFile'}}) }}
 	    			
@@ -76,7 +76,7 @@ function readURL(input) {
         var reader = new FileReader();
 
         reader.onload = function (e) {
-            $(".inputWrapper").attr('style', 'background-image: url('+e.target.result+'); margin-bottom:20px; height: 200px; width: 200px; background-size: 100%; background-repeat:no-repeat;');
+            $(".inputWrapper").attr('style', 'background-image: url('+e.target.result+');');
         }
 
         reader.readAsDataURL(input.files[0]);
