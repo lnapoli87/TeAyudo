@@ -34,11 +34,12 @@
 				<h3 class="form-signin-heading">Complete su perfil</h3>
 				Foto
 				{% if user.photoPath %}
-					<div class="inputWrapper" style="margin-bottom:20px; height: 200px; width: 150px; background-image: url({{ user.photoPath }})">
+					<div class="inputWrapper" style="margin-bottom:20px; height: 200px; width: 200px; background-image: url('{{ user.webPath }}'); background-size: 100%; background-repeat:no-repeat;">
 				{% else %}
-					<div class="inputWrapper" style="margin-bottom:20px; height: 200px; width: 150px; background-image: url({{ asset('bundles/TeAyudo/images/noprofileimage.jpg') }})">
+					<div class="inputWrapper" style="margin-bottom:20px; height: 200px; width: 200px; background-image: url({{ asset('bundles/TeAyudo/images/noprofileimage.jpg') }}); background-size: 100%; background-repeat:no-repeat;">
 				{% endif %}
 	    			{{ form_widget(userForm.file,{'attr':{'class':'fileInput hiddenFile','name':'photoInputFile'}}) }}
+	    			
 	    		</div>
 				{{ form_widget(userForm.name,{'attr': {'placeholder': 'Nombre Completo', 'class': 'registration-input'} }) }} 
 				{{ form_widget(userForm.email, {'attr': {'placeholder': 'Email','class': 'registration-input'} }) }} 
@@ -66,5 +67,20 @@ $(function() {
         },50);
     });
 });
+$("[type='file']").change(function(){
+	readURL(this);
+});
+function readURL(input) {
+
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            $(".inputWrapper").attr('style', 'background-image: url('+e.target.result+'); margin-bottom:20px; height: 200px; width: 200px; background-size: 100%; background-repeat:no-repeat;');
+        }
+
+        reader.readAsDataURL(input.files[0]);
+    }
+}
 </script>
 {% endblock %}

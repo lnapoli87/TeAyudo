@@ -362,7 +362,7 @@ public function getRoles()
 	{
 		return null === $this->photoPath
 		? null
-		: $this->getUploadDir().'/'.$this->photoPath;
+		: '../'.$this->getUploadDir().'/'.$this->photoPath;
 	}
 	protected function getUploadDir()
 	{
