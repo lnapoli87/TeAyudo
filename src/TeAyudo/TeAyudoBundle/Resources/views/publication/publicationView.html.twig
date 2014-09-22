@@ -35,6 +35,12 @@
 					<p>Activo</p>
 				{% endif %}
 				<p class="text-primary">@Usuario</p>
+				{% if cycle.user.photoPath %}
+					<div class="inputWrapper avatar" style="background-image: url('../{{ cycle.user.webPath }}');"></div>
+				{% else %}
+					<div class="inputWrapper avatar" style="background-image: url({{ asset('bundles/TeAyudo/images/noprofileimage.jpg') }});"></div>
+				{% endif %}
+				
 				<p>{{ cycle.user.name }}</p>
 				<script type="text/javascript">
 					var cycleCoords = "{{ cycle.coords }}";
