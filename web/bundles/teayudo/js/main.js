@@ -14,6 +14,16 @@ $(document).ready(function() {
         });
         $(this).addClass("active");
         var index = $(this).index();
+        
+        //Find the coords and center the map on the marker
+        $(this).siblings().each(function(){
+        	if($(this).prop('tagName') == 'INPUT'){
+        		if(cyclesCoordinates[$(this).val()]){
+        			map.setCenter(parseLatLngString(cyclesCoordinates[$(this).val()]));
+            	}
+        	}
+        });
+        
     });
     $("#newCycleBtn").click(function(e){
     	e.preventDefault();
@@ -34,3 +44,19 @@ $(document).ready(function() {
     var map = new google.maps.Map(document.getElementById("map_canvas"),
         mapOptions);
     
+var showCyclesMarkers = function showCyclesMarkers(coordsMap){
+	for(var cycle in coordsMap){
+		var marker = new google.maps.Marker({
+			map: map,
+			position: parseLatLngString(coordsMap[cycle])
+		});
+	}
+};
+
+var parseLatLngString = function parseLatLngString(coordsString){
+	var splitedCoords = coordsString.split(", ");
+	var lat = splitedCoords[0].replace("(","");
+	var lng = splitedCoords[1].replace(")","");
+	var latLngObj = new google.maps.LatLng(parseFloat(lat),parseFloat(lng));
+	return latLngObj;
+};
