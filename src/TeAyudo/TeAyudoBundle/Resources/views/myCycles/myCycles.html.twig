@@ -39,8 +39,19 @@
         			<td>{{ cycle.title }}</td>
         			<td>{{ cycle.description }}</td>
         			<td>{{ cycle.dateString }}</td>
-        			<td>{{ cycle.ended }}</td>
-        			<td>{{ cycle.active }}</td>
+        			
+  					{% if cycle.ended == true %}
+						<td>Si</td>
+					{% else %}
+						<td>No</td>
+					{% endif %}
+					
+					{% if cycle.active == true %}
+						<td>Si</td>
+					{% else %}
+						<td>No</td>
+					{% endif %}
+					
         			<td><a href="publication/{{ cycle.id }}"><span class="glyphicon glyphicon-search"></span></a></td>
         			<td><a href="main"><span class="glyphicon glyphicon-remove"></span></a></td>
         		</tr>

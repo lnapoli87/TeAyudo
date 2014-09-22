@@ -139,7 +139,7 @@ class Cycle {
     }
     
     public function getDateString(){
-    	return 'holaaa';
+    	return $this->date->format('d-m-Y H:i');
     }
 	public function getContactData() {
 		return $this->contactData;
