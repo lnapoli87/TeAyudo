@@ -31,7 +31,7 @@ class MainViewController extends Controller
 		$query = $em->createQuery(
 				'SELECT c
     			FROM TeAyudo\TeAyudoBundle\Entity\Cycle c
-    			ORDER BY c.date ASC'
+    			ORDER BY c.date DESC'
 		)->setMaxResults(6);
 	
 		$this->lastCycles = $query->getResult();
@@ -40,7 +40,7 @@ class MainViewController extends Controller
 				'SELECT c
     			FROM TeAyudo\TeAyudoBundle\Entity\Cycle c
     			WHERE c.cycleType = 0
-    			ORDER BY c.date ASC'
+    			ORDER BY c.date DESC'
 		)->setMaxResults(6);
 		
 		$this->lastHelpNeededCycles = $query->getResult();
@@ -49,7 +49,7 @@ class MainViewController extends Controller
 				'SELECT c
     			FROM TeAyudo\TeAyudoBundle\Entity\Cycle c
     			WHERE c.cycleType = 1
-    			ORDER BY c.date ASC'
+    			ORDER BY c.date DESC'
 		)->setMaxResults(6);
 		
 		$this->lastHelpOfferedCycles = $query->getResult();
