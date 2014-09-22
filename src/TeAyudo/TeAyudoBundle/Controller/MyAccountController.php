@@ -39,6 +39,7 @@ class MyAccountController extends Controller
     	$usrForm->handleRequest ( $req );
     	if ($usrForm->isValid ()) {
     		$data = $usrForm->getData();
+    		$data->setCoords($_POST["hiddenLatLng"]);
     		$data->uploadPhoto();
     		$this->synchronizeUser($data);
     		//TODO: show success message
@@ -61,7 +62,6 @@ class MyAccountController extends Controller
     
     public function synchronizeUser($submitedData){
     	$sessionUser = $this->getTheUser();
-    	
     	$sessionUser->setName($submitedData->getName());
     	$sessionUser->setTelephone($submitedData->getTelephone());
     	$sessionUser->setCellphone($submitedData->getCellphone());
@@ -69,7 +69,6 @@ class MyAccountController extends Controller
     	$sessionUser->setPhotoPath($submitedData->getPath());
 
     	$em = $this->getDoctrine()->getManager();
-    	
     	$em->persist($sessionUser);
     	$em->flush();
     }

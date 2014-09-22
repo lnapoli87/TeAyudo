@@ -11,8 +11,8 @@ use Symfony\Component\Validator\Constraints\Date;
 
 class CreateController extends Controller
 {
-	protected $error="";
-	protected $successMessage="";
+	protected $error='';
+	protected $successMessage='';
 	
     public function showAction(Request $req)
     {
@@ -21,8 +21,8 @@ class CreateController extends Controller
        return $this->render('TeAyudoBundle:creation:createCycle.html.twig', 
        		array('pageTitle' => 'TeAyudo.org', 
        		   		'username' => $userName,
-       				'error' => $this->error,
-       				'successMessage' => $this->successMessage,
+       				'error' => $this->getError(),
+       				'successMessage' => $this->getSuccessMessage(),
        				'cycleForm' => $this->createCycleForm($req,$usr)
        		));
     }
@@ -52,7 +52,7 @@ class CreateController extends Controller
     			$em = $this->getDoctrine()->getEntityManager();
     			$em->persist($newCycle);
     			$em->flush($newCycle);
-    			$this->setSuccessMessage("Se ha abierto un nuevo Ciclo. Un Administrador de TeAyudo.org validará el mismo y luego será visible para los demás usuarios del sitio. ¡Muchas gracias por tu aporte!");
+    			$this->setSuccessMessage('Se ha abierto un nuevo Ciclo. Un Administrador de TeAyudo.org validará el mismo y luego será visible para los demás usuarios del sitio. ¡Muchas gracias por tu aporte!');
     		} catch (DBALException $e) {
     			$this->setError('ERROR: Ocurrió un error, inténtelo nuevamente');
     		}

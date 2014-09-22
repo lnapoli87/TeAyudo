@@ -20,18 +20,14 @@
 	
 <div class="container">
 <h2 class="form-signin-heading">Comenzar un Nuevo Ciclo</h2>
+{% if successMessage is empty%}
           	{{ form_start(cycleForm) }}
           		<div class="container row createPageJumbo">
 	          		<div class="col-md-6"> 
 					
 					{% if error %}
-						<div class="error">
+						<div class="alert alert-warning">
 							<h5>{{ error }}</h5>
-						</div>
-					{% endif %}
-					{% if successMessage %}
-						<div class="success">
-							<h5>{{ successMessage }}</h5>
 						</div>
 					{% endif %}
 					{{ form_widget(cycleForm.cycleType) }}
@@ -49,7 +45,10 @@
 					</div>
 				</div>
 				<div class="actionFormButtons"><a href="main" class="registration-input">Volver</a>{{ form_widget(cycleForm.save) }}</div> 
-			{{ form_end(cycleForm) }}  	
+			{{ form_end(cycleForm) }}  
+{% else %}
+	<div class="alert alert-warning" style="margin-top:30px"><h4>{{successMessage}}</strong></h4>
+{% endif %}	
 </div>
 <script type="text/javascript" src="{{ asset('bundles/TeAyudo/js/createCycle.js') }}"/>			
 </script>

@@ -49,14 +49,16 @@
 				{{ form_widget(userForm.coords) }}
 				</div>
 				<div class="col-md-6">
-					<h3 class="form-signin-heading">Ingrese su ubicación</h3>		
+					<h3 class="form-signin-heading">Ingrese su ubicación</h3>
+					<input type="hidden" name="hiddenLatLng" id="hiddenLatLng" value=""/>
+					<input class="input-searchBox registration-input" type="text" id="searchBoxInput"/>		
 					<div id="map_canvas" style="max-height: 430px"></div>
 				</div>
 	  </div>
 	  {{ form_widget(userForm.save) }}
   {{ form_end(userForm) }}
 </div>
-<script type="text/javascript" src="{{ asset('bundles/TeAyudo/js/main.js') }}">
+<script type="text/javascript" src="{{ asset('bundles/TeAyudo/js/createCycle.js') }}">
 </script>
 <script type="text/javascript">
 $(function() {
@@ -67,6 +69,12 @@ $(function() {
             button.removeClass('clicked');
         },50);
     });
+
+    {% if user.coords %}
+	    marker.setPosition(parseLatLngString('{{ user.coords }}'));
+		marker.setMap(map);
+		$("#hiddenLatLng").val(scope.latLng.toString());
+    {% endif %}
 });
 $("[type='file']").change(function(){
 	readURL(this);

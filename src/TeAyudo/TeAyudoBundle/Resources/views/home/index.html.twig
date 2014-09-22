@@ -22,8 +22,8 @@
 	{{ form_start(registrationForm) }} 
 		<h2 class="form-signin-heading">Regístrese</h2>
 		{% if registerError %}
-			<div class="error">
-				<h5>{{ registerError }}</h5>
+			<div class="alert alert-warning">
+				<h4>{{ registerError }}</h4>
 			</div>
 		{% endif %}
 		{{ form_widget(registrationForm.name, 
@@ -33,6 +33,6 @@
 		{{ form_widget(registrationForm.passwordRepeat, {'attr': {'placeholder':'Repita la contraseña', 'class': 'registration-input'} }) }} 
 	{{ form_end(registrationForm) }}
 {% else %}
-	{{registrationSuccess}}
+	<div class="alert alert-warning" style="margin-top:30px"><h4>{{registrationSuccess}}</strong></h4>
 {% endif %}
 {% endblock %}

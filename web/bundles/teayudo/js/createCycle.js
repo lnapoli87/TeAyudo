@@ -63,5 +63,10 @@ google.maps.event.addListener(map, 'click', function(scope) {
 	$("#hiddenLatLng").val(scope.latLng.toString());
   });
 
-
-
+var parseLatLngString = function parseLatLngString(coordsString){
+	var splitedCoords = coordsString.split(", ");
+	var lat = splitedCoords[0].replace("(","");
+	var lng = splitedCoords[1].replace(")","");
+	var latLngObj = new google.maps.LatLng(parseFloat(lat),parseFloat(lng));
+	return latLngObj;
+};
