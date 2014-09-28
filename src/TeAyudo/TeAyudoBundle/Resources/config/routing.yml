@@ -22,6 +22,22 @@ _admin:
     path:     /admin
     defaults: { _controller: TeAyudoBundle:Admin:index }
     
+_approveUser:
+    path:     /admin/approveUser/{userId}
+    defaults: { _controller: TeAyudoBundle:Admin:approveUser }
+    
+_denyUser:
+    path:     /admin/denyUser/{userId}
+    defaults: { _controller: TeAyudoBundle:Admin:denyUser }
+    
+_approveCycle:
+    path:     /admin/approveCycle/{cycleId}
+    defaults: { _controller: TeAyudoBundle:Admin:approveCycle }
+    
+_denyCycle:
+    path:     /admin/denyCycle/{cycleId}
+    defaults: { _controller: TeAyudoBundle:Admin:denyCycle }
+    
 _cycles:
     path:     /myCycles
     defaults: { _controller: TeAyudoBundle:MyCycles:show }

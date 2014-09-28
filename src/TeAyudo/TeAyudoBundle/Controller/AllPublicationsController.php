@@ -31,6 +31,7 @@ class AllPublicationsController extends Controller
 		$query = $em->createQuery(
 				'SELECT c
     			FROM TeAyudo\TeAyudoBundle\Entity\Cycle c
+				WHERE c.active = true
     			ORDER BY c.date ASC'
 		);
 	
@@ -39,7 +40,7 @@ class AllPublicationsController extends Controller
 		$query = $em->createQuery(
 				'SELECT c
     			FROM TeAyudo\TeAyudoBundle\Entity\Cycle c
-    			WHERE c.cycleType = 0
+    			WHERE c.cycleType = 0 AND c.active = true
     			ORDER BY c.date ASC'
 		);
 		
@@ -48,7 +49,7 @@ class AllPublicationsController extends Controller
 		$query = $em->createQuery(
 				'SELECT c
     			FROM TeAyudo\TeAyudoBundle\Entity\Cycle c
-    			WHERE c.cycleType = 1
+    			WHERE c.cycleType = 1 AND c.active = true
     			ORDER BY c.date ASC'
 		);
 		

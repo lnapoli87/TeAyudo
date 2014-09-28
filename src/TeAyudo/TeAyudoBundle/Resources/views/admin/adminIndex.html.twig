@@ -1,88 +1,205 @@
-{% extends 'TeAyudoBundle:Default:base.html.twig' %} 
-{% block middleAction %} 
+{% extends 'TeAyudoBundle:Default:base.html.twig' %} {% block
+middleAction %}
 <center style="margin-top: 81px;">
-<button id="newCycleBtn" class="middleHeader btn btn-primary btn-lg"><h4 class="glyphicon glyphicon-plus"></h4>&nbsp;&nbsp;Crear un Nuevo Ciclo</button>
+	<button id="newCycleBtn" class="middleHeader btn btn-primary btn-lg">
+		<h4 class="glyphicon glyphicon-plus"></h4>
+		&nbsp;&nbsp;Crear un Nuevo Ciclo
+	</button>
 </center>
-{% endblock %}
-{% block rightMenu%} 
+{% endblock %} {% block rightMenu%}
 <div class="headHome">
 	<h2 class="form-signin-heading">Bienvenido</h2>
-	<h4>{{ username }}</h5>
+	<h4>
+		{{ username }}
+		</h5>
+
 </div>
 <ul class="nav nav-pills mainMenu">
-	 <li class="active"><a href="main">Inicio</a></li>
-	 <li><a	href="myCycles">Mis Ciclos</a></li>
-	 <li><a href="myAccount">Mi Cuenta</a>
-	 </li>
+	<li class="active"><a href="{{ path('_mainView') }}">Inicio</a></li>
+	 <li><a	href="{{ path('_cycles') }}">Mis Ciclos</a></li>
+	 <li><a href="{{ path('_userAccount') }}">Mi Cuenta</a></li>
 </ul>
 <span class="headHome"><a href="logout">Salir</a></span>
-{% endblock %} 
+{% endblock %} {%block content %}
 
-{%block content %} 
-	
 <div class="container">
 	<h2 class="form-signin-heading">Administración</h2>
 	<div class="row">
-        <div class="col-lg-12 col-md-12 col-sm-8 col-xs-9 bhoechie-tab-container">
-            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 bhoechie-tab-menu">
-              <div class="list-group">
-                <a href="#" class="list-group-item active text-center">
-                  <h4 class="glyphicon glyphicon-user"></h4><br/>Nuevos Ciclos</a>
-                <a href="#" class="list-group-item text-center">
-                  <h4 class="glyphicon glyphicon-heart"></h4><br/>Nuevos Usuarios</a>
-                <a href="#" class="list-group-item text-center">
-                  <h4 class="glyphicon glyphicon-asterisk"></h4><br/>Gestión de Ciclos</a>
-                <a href="#" class="list-group-item text-center">
-                  <h4 class="glyphicon glyphicon-asterisk"></h4><br/>Gestión de Usuarios</a>
-              </div>
-            </div>
-            <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 bhoechie-tab">
-                <div class="bhoechie-tab-content active">
-                    <center>
-                      	<div class="list-group">
-	                      	{% for cycle in newCycles %}
-	                      	<div class="input-group">
-      							<div class="input-group-addon"><a href="publication/{{ cycle.id }}" class="seeMoreLink"><span class="glyphicon glyphicon-plus"></span>Ver más</a></div>
-								  <a class="list-group-item">
-								    <h4 class="list-group-item-heading">{{ cycle.title }}</h4>
-								    <p class="list-group-item-text">{{ cycle.description }}</p>
-								  </a>
-							 </div>
-							{% endfor %}
+		<div
+			class="col-lg-12 col-md-12 col-sm-8 col-xs-9 bhoechie-tab-container">
+			<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 bhoechie-tab-menu">
+				<div class="list-group">
+					<a href="#" class="list-group-item active text-center">
+						<h4 class="glyphicon glyphicon-retweet"></h4>
+						<br />Nuevos Ciclos
+					</a> <a href="#" class="list-group-item text-center">
+						<h4 class="glyphicon glyphicon-user"></h4>
+						<br />Nuevos Usuarios
+					</a> <a href="#" class="list-group-item text-center">
+						<h4 class="glyphicon glyphicon-asterisk"></h4>
+						<br />Gestión de Ciclos
+					</a> <a href="#" class="list-group-item text-center">
+						<h4 class="glyphicon glyphicon-asterisk"></h4>
+						<br />Gestión de Usuarios
+					</a>
+				</div>
+			</div>
+			<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 bhoechie-tab">
+				<div class="bhoechie-tab-content active">
+					<center>
+						<div class="list-group">
+							<table class="table table-striped">
+								<tr>
+									<th>#ID</th>
+									<th>Titulo</th>
+									<th>Descripción</th>
+									<th>Usuario</th>
+									<th>Fecha</th>
+									<th>Ver</th>
+									<th>Aceptar</th>
+									<th>Cancelar</th>
+								</tr>
+								{% for cycle in newCycles %}
+								<tr>
+									<td>{{ cycle.id }}</td>
+									<td>{{ cycle.title }}</td>
+									<td>{{ cycle.description }}</td>
+									<td>{{ cycle.user.email }}</td>
+									<td>{{ cycle.title }}</td>
+									<td><center>
+											<a href="{{ path('_publication', {cycleId: cycle.id}) }}"><span
+												class="glyphicon glyphicon-search"></span></a>
+										</center></td>
+									<td><center>
+											<a href="{{ path('_approveCycle', {cycleId: cycle.id}) }}"><span class="glyphicon glyphicon-ok"></span></a>
+										</center></td>
+									<td><center>
+											<a href="{{ path('_denyCycle', {cycleId: cycle.id}) }}"><span class="glyphicon glyphicon-remove"></span></a>
+										</center></td>
+								</tr>
+								{% endfor %}
+							</table>
 						</div>
-                    </center>
-                </div>
-                <div class="bhoechie-tab-content">
-                    <center>
-                      <div class="list-group">
-						 	{% for user in newUsers %}
-						  	<div class="input-group">
-								  <a class="list-group-item">
-								    <h4 class="list-group-item-heading">{{ user.name }}</h4>
-								    <p class="list-group-item-text">{{ user.active }}</p>
-								  </a>
-							 </div>
-							{% endfor %}
+					</center>
+				</div>
+				<div class="bhoechie-tab-content">
+					<center>
+						<div class="list-group">
+							<table class="table table-striped">
+								<tr>
+									<th>#ID</th>
+									<th>Nombre</th>
+									<th>Email</th>
+									<th>Aceptar</th>
+									<th>Cancelar</th>
+								</tr>
+								{% for user in newUsers %}
+								<tr>
+									<td>{{ user.id }}</td>
+									<td>{{ user.name }}</td>
+									<td>{{ user.email }}</td>
+									<td><center>
+											<a href="{{ path('_approveUser', {userId: user.id}) }}"><span class="glyphicon glyphicon-ok"></span></a>
+										</center></td>
+									<td><center>
+											<a href="{{ path('_denyUser', {userId: user.id}) }}" onclick="return confirm('Está seguro de que desea denegar el Usuario?');"><span class="glyphicon glyphicon-remove"></span></a>
+										</center></td>
+								</tr>
+								{% endfor %}
+							</table>
 						</div>
-                    </center>
-                </div>
-                <div class="bhoechie-tab-content">
-                    <center>
-                      <div class="list-group">
+					</center>
+				</div>
+				<div class="bhoechie-tab-content">
+					<center>
+						<div class="list-group">
+							<table class="table table-striped">
+								<tr>
+									<th>#ID</th>
+									<th>Titulo</th>
+									<th>Descripción</th>
+									<th>Usuario</th>
+									<th>Fecha</th>
+									<th>Ver</th>
+									<th>Cancelar</th>
+								</tr>
+								{% for cycle in activeCycles %}
+								<tr>
+									<td>{{ cycle.id }}</td>
+									<td>{{ cycle.title }}</td>
+									<td>{{ cycle.description }}</td>
+									<td>{{ cycle.user.email }}</td>
+									<td>{{ cycle.title }}</td>
+									<td>
+										<center>
+											<a href="{{ path('_publication', {cycleId: cycle.id}) }}"><span
+												class="glyphicon glyphicon-search"></span></a>
+										</center>
+									</td>
+									<td>
+										<center>
+											<a href="{{ path('_denyCycle', {cycleId: cycle.id}) }}" onclick="return confirm('Está seguro de que desea denegar el Ciclo?');"><span class="glyphicon glyphicon-remove"></span></a>
+										</center>
+									</td>
+								</tr>
+								{% endfor %}
+							</table>
 						</div>
-                    </center>
-                </div>
-                <div class="bhoechie-tab-content">
-                    <center>
-                      <div class="list-group">
+					</center>
+				</div>
+				<div class="bhoechie-tab-content">
+					<center>
+						<div class="list-group">
+							<table class="table table-striped">
+								<tr>
+									<th>#ID</th>
+									<th>Nombre</th>
+									<th>Email</th>
+									<th>Cancelar</th>
+								</tr>
+								{% for user in activeUsers %}
+								<tr>
+									<td>{{ user.id }}</td>
+									<td>{{ user.name }}</td>
+									<td>{{ user.email }}</td>
+									<td>
+										<center>
+											<a href="{{ path('_denyUser', {userId: user.id}) }}"><span class="glyphicon glyphicon-remove" onclick="return confirm('Está seguro de que desea denegar el Usuario?');"></span></a>
+										</center>
+									</td>
+								</tr>
+								{% endfor %}
+							</table>
 						</div>
-                    </center>
-                </div>
-            </div>
-        </div>
-  </div>
+					</center>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
-<script type="text/javascript" src="{{ asset('bundles/TeAyudo/js/main.js') }}">
+<script type="text/javascript">
+$(document).ready(function() {
+    $("div.bhoechie-tab-menu>div.list-group>a.list-group-item").click(function(e) {
+        e.preventDefault();
+        $(this).siblings('a.active').removeClass("active");
+        $(this).addClass("active");
+        var index = $(this).index();
+        $("div.bhoechie-tab>div.bhoechie-tab-content").removeClass("active");
+        $("div.bhoechie-tab>div.bhoechie-tab-content").eq(index).addClass("active");
+    });
+    $("div.bhoechie-tab-content>center>div.list-group>div.input-group>a.list-group-item").click(function(e) {
+        e.preventDefault();
+        $("div.bhoechie-tab-content>center>div.list-group>div.input-group>a.list-group-item").each(function(){
+        	$(this).removeClass("active");
+        });
+        $(this).addClass("active");
+        var index = $(this).index();
+    });
+    $("#newCycleBtn").click(function(e){
+    	e.preventDefault();
+    	window.location="./create";
+    });
+});
 </script>
 
 {% endblock %}
