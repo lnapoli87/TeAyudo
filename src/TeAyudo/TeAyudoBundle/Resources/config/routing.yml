@@ -26,6 +26,10 @@ _cycles:
     path:     /myCycles
     defaults: { _controller: TeAyudoBundle:MyCycles:show }
     
+_deleteCycle:
+    path:     /myCycles/delete/{id}
+    defaults: { _controller: TeAyudoBundle:MyCycles:deleteCycle }
+    
 _userAccount:
     path:     /myAccount
     defaults: { _controller: TeAyudoBundle:MyAccount:show }

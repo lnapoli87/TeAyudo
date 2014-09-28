@@ -11,9 +11,9 @@
 	<h4>{{ username }}</h5>
 </div>
 <ul class="nav nav-pills mainMenu">
-	 <li><a href="main">Inicio</a></li>
-	 <li class="active"><a	href="myCycles">Mis Ciclos</a></li>
-	 <li><a href="myAccount">Mi Cuenta</a>
+	 <li><a href="{{ path('_mainView') }}">Inicio</a></li>
+	 <li class="active"><a	href="{{ path('_cycles') }}">Mis Ciclos</a></li>
+	 <li><a href="{{ path('_userAccount') }}">Mi Cuenta</a>
 	 </li>
 </ul>
 <span class="headHome"><a href="logout">Salir</a></span>
@@ -52,8 +52,8 @@
 						<td>No</td>
 					{% endif %}
 					
-        			<td><a href="publication/{{ cycle.id }}"><span class="glyphicon glyphicon-search"></span></a></td>
-        			<td><a href="main"><span class="glyphicon glyphicon-remove"></span></a></td>
+        			<td><a href="{{ path('_publication', {cycleId: cycle.id}) }}"><span class="glyphicon glyphicon-search"></span></a></td>
+        			<td><a href="{{ path('_deleteCycle', {id: cycle.id}) }}" onclick="return confirm('Está seguro de que desea terminar el Ciclo?');"><span class="glyphicon glyphicon-remove"></span></a></td>
         		</tr>
       			{% endfor %}
 			</table>  	

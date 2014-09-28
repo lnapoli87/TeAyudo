@@ -68,7 +68,7 @@ class IndexController extends Controller {
 	public function createLoginForm($request) {
 		$session = $request->getSession();
 
-		if($request->attributes->has('registrationForm')){		
+// 		if($request->attributes->has('registrationForm')){		
 			// get the login error if there is one
 			if ($request->attributes->has(SecurityContextInterface::AUTHENTICATION_ERROR)) {
 				$this->error = $request->attributes->get(
@@ -84,7 +84,7 @@ class IndexController extends Controller {
 			// last username entered by the user
 			$this->lastUsername = (null === $session) ? '' :
 			$session->get(SecurityContextInterface::LAST_USERNAME);
-		}
+// 		}
 		
 	}
 	

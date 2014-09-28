@@ -148,5 +148,10 @@ class Cycle {
 		$this->contactData = $contactData;
 		return $this;
 	}
+	public function setId($id) {
+		$this->id = $id;
+		return $this;
+	}
+	
 	
 }
