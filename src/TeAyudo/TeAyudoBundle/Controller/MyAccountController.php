@@ -11,7 +11,7 @@ class MyAccountController extends Controller
 {
 	protected $theUser;
 	protected $error;
-	
+	protected $successMessage = '';
     public function showAction(Request $req)
     {
         $this->setTheUser($this->get('security.context')->getToken()->getUser());
@@ -21,7 +21,8 @@ class MyAccountController extends Controller
         				'username' => $userName,
         				'error'=>$this->getError(), 
         				'user'=>$this->getTheUser(),
-        				'userForm'=>$this->createUserForm($req)
+        				'userForm'=>$this->createUserForm($req),
+        				'successMessage'=> $this->successMessage
         		));
     }
     
@@ -42,7 +43,7 @@ class MyAccountController extends Controller
     		$data->setCoords($_POST["hiddenLatLng"]);
     		$data->uploadPhoto();
     		$this->synchronizeUser($data);
-    		//TODO: show success message
+    		$this->successMessage = 'Se han guardado los cambios correctamente';
     	}
     
     	return $usrForm->createView ();

@@ -62,4 +62,10 @@
 <script type="text/javascript" src="{{ asset('bundles/TeAyudo/js/main.js') }}">
 </script>
 
+{% if removeActionResult is not empty %}
+	<script type="text/javascript">
+		toastr.info('{{ removeActionResult }}');
+	</script>
+{% endif %}
+
 {% endblock %}

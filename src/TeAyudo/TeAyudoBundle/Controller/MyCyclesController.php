@@ -10,12 +10,19 @@ use Symfony\Component\HttpFoundation\Request;
 class MyCyclesController extends Controller
 {
 	protected $cycles;
+	protected $removeActionResult = '';
     public function showAction()
     {
     	$usr= $this->get('security.context')->getToken()->getUser();
     	$userName = $usr->getName();
     	$this->getCyclesFromDB($usr);
-        return $this->render('TeAyudoBundle:myCycles:myCycles.html.twig', array('pageTitle' => 'TeAyudo.org', 'username' => $userName, 'cycles'=>$this->getCycles()));
+        return $this->render('TeAyudoBundle:myCycles:myCycles.html.twig', 
+        		array(
+        				'pageTitle' => 'TeAyudo.org', 
+        				'username' => $userName, 
+        				'cycles'=>$this->getCycles(),
+        				'removeActionResult'=>$this->removeActionResult
+        		));
     }
     
     
@@ -31,6 +38,7 @@ class MyCyclesController extends Controller
     		$cycle->setEnded(true);
     		$em->merge($cycle);
     		$em->flush();
+    		$this->removeActionResult = 'Ha finalizado el Ciclo "' . $cycle->getTitle() . '"';
     	} catch (DBALException $e) {
     		$this->setError('ERROR: Ocurrió un error, inténtelo nuevamente');
     	}
