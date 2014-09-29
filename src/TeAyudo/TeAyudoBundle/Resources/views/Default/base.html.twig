@@ -10,10 +10,12 @@
 	href="{{ asset('bundles/TeAyudo/css/base.css') }}" />
 <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet"
 	media="screen">
+<link rel="stylesheet" href="{{ asset('bundles/TeAyudo/css/toastr.css') }}" />
 {% include 'BraincraftedBootstrapBundle::ie8-support.html.twig' %}
 <!-- javascript -->
 <script src="{{ asset('js/jquery.js') }}"></script>
 <script src="{{ asset('js/bootstrap.js') }}"></script>
+<script type="text/javascript" src="{{ asset('bundles/teayudo/js/toastr.js') }}"></script>
 <script type="text/javascript"
       src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAU6bgUvjx3W-janq9XAA_ENl_fKuo8pXA&sensor=true&libraries=places">
 </script>
@@ -41,6 +43,23 @@
 			<br/>
 			<div class="footer">&copy; lucasnapoli 2014</div>
 		</div>
-
+		
+		
+		<script type="text/javascript">
+		toastr.options = {
+				  "closeButton": false,
+				  "debug": false,
+				  "positionClass": "toast-top-right",
+				  "onclick": null,
+				  "showDuration": "300",
+				  "hideDuration": "1000",
+				  "timeOut": "5000",
+				  "extendedTimeOut": "1000",
+				  "showEasing": "swing",
+				  "hideEasing": "linear",
+				  "showMethod": "fadeIn",
+				  "hideMethod": "fadeOut"
+				}
+		</script>
 </body>
 </html>

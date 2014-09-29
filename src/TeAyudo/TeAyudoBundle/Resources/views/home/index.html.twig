@@ -3,10 +3,10 @@
 {% block rightMenu%} 
 <form action="{{ path('login_check') }}" method="post">
 	<h2 class="form-signin-heading">Ingresar</h2>
-	{% if error %}
-		<div class="error">
-			<h5>{{ error.message }}</h5>
-		</div>
+	{% if error is not empty %}
+		<script type="text/javascript">
+			toastr.error('{{ error.message }}');
+		</script>
 	{% endif %}
 	<input type="text" id="username" name="_username" value="{{ last_username }}" placeholder="Email" class="form-control registration-input"/>
  	<input type="password" id="password" name="_password" placeholder="Contraseña" class="form-control registration-input"/> 
@@ -18,13 +18,13 @@
 
 {%block content %} 
 {{include('TeAyudoBundle:home:indexCarousel.html.twig') }}
-{% if not registrationSuccess %}
+{% if registrationSuccess is empty%}
 	{{ form_start(registrationForm) }} 
 		<h2 class="form-signin-heading">Regístrese</h2>
 		{% if registerError %}
-			<div class="alert alert-warning">
-				<h4>{{ registerError }}</h4>
-			</div>
+			<script type="text/javascript">
+				toastr.error('{{ registerError }}');
+			</script>
 		{% endif %}
 		{{ form_widget(registrationForm.name, 
 			{'attr': {'placeholder': 'Nombre Completo', 'class': 'registration-input'} }) }} 
@@ -33,6 +33,8 @@
 		{{ form_widget(registrationForm.passwordRepeat, {'attr': {'placeholder':'Repita la contraseña', 'class': 'registration-input'} }) }} 
 	{{ form_end(registrationForm) }}
 {% else %}
-	<div class="alert alert-warning" style="margin-top:30px"><h4>{{registrationSuccess}}</strong></h4>
+	<script type="text/javascript">
+		toastr.success('{{ registrationSuccess }}');
+	</script>
 {% endif %}
 {% endblock %}

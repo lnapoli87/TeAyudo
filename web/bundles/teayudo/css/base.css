@@ -193,3 +193,6 @@ position: relative;
 	padding: 5px 5px !important; 
 	margin-top:10px;
 }
+.toast {
+    opacity: 1 !important;
+}

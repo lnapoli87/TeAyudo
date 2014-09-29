@@ -11,8 +11,8 @@ use Symfony\Component\Validator\Constraints\Date;
 
 class CreateController extends Controller
 {
-	protected $error='';
-	protected $successMessage='';
+	protected $error = '';
+	protected $createSuccessMessage = '';
 	
     public function showAction(Request $req)
     {
@@ -21,9 +21,9 @@ class CreateController extends Controller
        return $this->render('TeAyudoBundle:creation:createCycle.html.twig', 
        		array('pageTitle' => 'TeAyudo.org', 
        		   		'username' => $userName,
+       				'cycleForm' => $this->createCycleForm($req,$usr),
        				'error' => $this->getError(),
-       				'successMessage' => $this->getSuccessMessage(),
-       				'cycleForm' => $this->createCycleForm($req,$usr)
+       				'createSuccessMessage' => $this->getCreateSuccessMessage()
        		));
     }
     
@@ -52,7 +52,7 @@ class CreateController extends Controller
     			$em = $this->getDoctrine()->getEntityManager();
     			$em->persist($newCycle);
     			$em->flush($newCycle);
-    			$this->setSuccessMessage('Se ha abierto un nuevo Ciclo. Un Administrador de TeAyudo.org validará el mismo y luego será visible para los demás usuarios del sitio. ¡Muchas gracias por tu aporte!');
+    			$this->setCreateSuccessMessage('Se ha abierto un nuevo Ciclo. Un Administrador de TeAyudo.org validará el mismo y luego será visible para los demás usuarios del sitio. ¡Muchas gracias por tu aporte!');
     		} catch (DBALException $e) {
     			$this->setError('ERROR: Ocurrió un error, inténtelo nuevamente');
     		}
@@ -67,11 +67,11 @@ class CreateController extends Controller
 		$this->error = $error;
 		return $this;
 	}
-	public function getSuccessMessage() {
-		return $this->successMessage;
+	public function getCreateSuccessMessage() {
+		return $this->createSuccessMessage;
 	}
-	public function setSuccessMessage($successMessage) {
-		$this->successMessage = $successMessage;
+	public function setCreateSuccessMessage($successMessage) {
+		$this->createSuccessMessage = $successMessage;
 		return $this;
 	}
 	
