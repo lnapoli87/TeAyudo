@@ -200,6 +200,16 @@ $(document).ready(function() {
     	window.location="./create";
     });
 });
+
+{% if error is not empty %}
+	toastr.error('{{ error }}');
+{% endif %}
+{% if successMessage is not empty %}
+	toastr.success('{{ successMessage }}');
+{% endif %}
+{% if denySuccessMessage is not empty %}
+toastr.success('{{ denySuccessMessage }}');
+{% endif %}
 </script>
 
 {% endblock %}

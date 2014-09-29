@@ -9,6 +9,11 @@ use Symfony\Component\HttpFoundation\Response;
 
 class AdminController extends Controller
 {
+	
+	protected $error = '';
+	protected $successMessage = '';
+	protected $denySuccessMessage = '';
+	
 public function indexAction(Request $request)
     {
     	$usr= $this->get('security.context')->getToken()->getUser();
@@ -19,27 +24,34 @@ public function indexAction(Request $request)
         				'newCycles'=>$this->getNewCycles(),
         				'newUsers'=>$this->getNewUsers(),
         				'activeUsers' => $this->getActiveUsers(),
-        				'activeCycles' => $this->getActiveCycles()
+        				'activeCycles' => $this->getActiveCycles(),
+        				'error'=> $this->error,
+        				'successMessage'=> $this->successMessage,
+        				'denySuccessMessage'=>$this->denySuccessMessage
         		));
     }
     
     public function approveUserAction(Request $request, $userId){
     	$this->changeUserStatusById($userId, true);
+    	$this->successMessage = 'Se ha aprobado el usuario';
     	return $this->indexAction($request);
     }
     
     public function denyUserAction(Request $request, $userId){
     	$this->changeUserStatusById($userId, false);
+    	$this->denySuccessMessage = 'Se ha denegado el usuario';
     	return $this->indexAction($request);
     }
     
     public function approveCycleAction(Request $request, $cycleId){
     	$this->changeCycleStatusById($cycleId, true);
+    	$this->successMessage = 'Se ha aprobado el ciclo';
     	return $this->indexAction($request);
     }
     
     public function denyCycleAction(Request $request, $cycleId){
     	$this->changeCycleStatusById($cycleId, false);
+    	$this->denySuccessMessage = 'Se ha denegado el ciclo';
     	return $this->indexAction($request);
     }
     
@@ -142,4 +154,19 @@ public function indexAction(Request $request)
 	
 		return $query->getResult();
 	}
+	public function getError() {
+		return $this->error;
+	}
+	public function setError($error) {
+		$this->error = $error;
+		return $this;
+	}
+	public function getSuccessMessage() {
+		return $this->successMessage;
+	}
+	public function setSuccessMessage($successMessage) {
+		$this->successMessage = $successMessage;
+		return $this;
+	}
+	
 }
