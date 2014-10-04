@@ -68,24 +68,21 @@ class IndexController extends Controller {
 	public function createLoginForm($request) {
 		$session = $request->getSession();
 
-// 		if($request->attributes->has('registrationForm')){		
-			// get the login error if there is one
-			if ($request->attributes->has(SecurityContextInterface::AUTHENTICATION_ERROR)) {
-				$this->error = $request->attributes->get(
-						SecurityContextInterface::AUTHENTICATION_ERROR
-				);
-			} elseif (null !== $session &&
-					$session->has(SecurityContextInterface::AUTHENTICATION_ERROR)) {
-				$this->error = $session->get(SecurityContextInterface::AUTHENTICATION_ERROR);
-				$session->remove(SecurityContextInterface::AUTHENTICATION_ERROR);
-			} else {
-				$this->error = '';
-			}
-			// last username entered by the user
-			$this->lastUsername = (null === $session) ? '' :
-			$session->get(SecurityContextInterface::LAST_USERNAME);
-// 		}
-		
+		// get the login error if there is one
+		if ($request->attributes->has(SecurityContextInterface::AUTHENTICATION_ERROR)) {
+			$this->error = $request->attributes->get(
+					SecurityContextInterface::AUTHENTICATION_ERROR
+			);
+		} elseif (null !== $session &&
+				$session->has(SecurityContextInterface::AUTHENTICATION_ERROR)) {
+			$this->error = $session->get(SecurityContextInterface::AUTHENTICATION_ERROR);
+			$session->remove(SecurityContextInterface::AUTHENTICATION_ERROR);
+		} else {
+			$this->error = '';
+		}
+		// last username entered by the user
+		$this->lastUsername = (null === $session) ? '' :
+		$session->get(SecurityContextInterface::LAST_USERNAME);
 	}
 	
 	public function getLoginError() {
@@ -99,10 +96,16 @@ class IndexController extends Controller {
 	public function createUserFromRegistrationForm(RegistrationForm $registrationFormData){
 		$newUser = new User();
 		$newUser->setAdmin(false); 
+		$newUser->setDenied(false);
 		$newUser->setName($registrationFormData->getName());
 		$newUser->setPassword($registrationFormData->getPassword());
 		$newUser->setEmail($registrationFormData->getEmail());
 		$newUser->setActive(false);
+		
+		$factory = $this->get('security.encoder_factory');
+		$encoder = $factory->getEncoder($newUser);
+		$password = $encoder->encodePassword($registrationFormData->getPassword(), $newUser->getSalt());
+		$newUser->setPassword($password);
 		
 		return $newUser;
 	}

@@ -1,6 +1,7 @@
 security:
     encoders:
-        TeAyudo\TeAyudoBundle\Entity\User: plaintext
+        TeAyudo\TeAyudoBundle\Entity\User:
+            algorithm: bcrypt
             
     role_hierarchy:
         ROLE_ADMIN:       ROLE_USER

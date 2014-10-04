@@ -54,6 +54,10 @@ class Cycle {
 	 * @ORM\Column(type="boolean", nullable=false)
 	 */
 	protected $active;
+	/**
+	 * @ORM\Column(type="boolean", nullable=false)
+	 */
+	protected $denied;
 	
 	
 	
@@ -138,6 +142,18 @@ class Cycle {
         return $this->active;
     }
     
+    
+    
+    public function setDenied($denied)
+    {
+    	$this->denied = $denied;
+    
+    	return $this;
+    }
+    public function getDenied()
+    {
+    	return $this->denied;
+    }
     public function getDateString(){
     	return $this->date->format('d-m-Y H:i');
     }

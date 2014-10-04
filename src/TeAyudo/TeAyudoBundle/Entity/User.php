@@ -62,6 +62,11 @@ class User implements UserInterface, \Serializable{
 	/**
 	 * @ORM\Column(type="boolean", nullable=false)
 	 */
+	protected $denied;
+	
+	/**
+	 * @ORM\Column(type="boolean", nullable=false)
+	 */
 	protected $admin;
 	
 	/**
@@ -356,6 +361,15 @@ public function getRoles()
 	public function setPhotoPath($photoPath) {
 		$this->photoPath = $photoPath;
 		return $this;
+	}
+	public function setDenied($denied)
+	{
+		$this->denied = $denied;
+		return $this;
+	}
+	public function getDenied()
+	{
+		return $this->denied;
 	}
 	
 	public function getWebPath()

@@ -47,6 +47,7 @@ class CreateController extends Controller
     			$newCycle->setDate(new \DateTime());
     			$newCycle->setEnded(false);
     			$newCycle->setActive(false);
+    			$newCycle->setDenied(false);
     			$newCycle->setCoords($_POST["hiddenLatLng"]);
     			$newCycle->setUser($usr);
     			$em = $this->getDoctrine()->getEntityManager();
