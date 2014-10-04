@@ -78,6 +78,10 @@ class User implements UserInterface, \Serializable{
 	 * @ORM\Column(type="string", length=255, nullable=true)
 	 */
 	public $photoPath;
+	/**
+	 * @ORM\Column(type="string", length=200, nullable=false)
+	 */
+	protected $role;
 	
     /**
      * Get id
@@ -232,7 +236,7 @@ class User implements UserInterface, \Serializable{
 	 */
 public function getRoles()
 {
-    return array('ROLE_USER');
+    return array($this->role);
 }
 
 	/* (non-PHPdoc)
@@ -370,6 +374,16 @@ public function getRoles()
 	public function getDenied()
 	{
 		return $this->denied;
+	}
+	public function setRole($role)
+	{
+		$this->role = $role;
+	
+		return $this;
+	}
+	public function getRole()
+	{
+		return $this->role;
 	}
 	
 	public function getWebPath()

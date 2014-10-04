@@ -101,6 +101,7 @@ class IndexController extends Controller {
 		$newUser->setPassword($registrationFormData->getPassword());
 		$newUser->setEmail($registrationFormData->getEmail());
 		$newUser->setActive(false);
+		$newUser->setRole('ROLE_USER');
 		
 		$factory = $this->get('security.encoder_factory');
 		$encoder = $factory->getEncoder($newUser);

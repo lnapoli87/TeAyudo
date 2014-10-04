@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use TeAyudo\TeAyudoBundle\Entity\User;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\File\Exception\AccessDeniedException;
 
 class AdminController extends Controller
 {
@@ -16,19 +17,23 @@ class AdminController extends Controller
 	
 public function indexAction(Request $request)
     {
-    	$usr= $this->get('security.context')->getToken()->getUser();
-    	$userName = $usr->getName();
-        return $this->render('TeAyudoBundle:admin:adminIndex.html.twig', 
-        		array('pageTitle' => 'TeAyudo.org', 
-        				'username' => $userName,
-        				'newCycles'=>$this->getNewCycles(),
-        				'newUsers'=>$this->getNewUsers(),
-        				'activeUsers' => $this->getActiveUsers(),
-        				'activeCycles' => $this->getActiveCycles(),
-        				'error'=> $this->error,
-        				'successMessage'=> $this->successMessage,
-        				'denySuccessMessage'=>$this->denySuccessMessage
-        		));
+    	if (false === $this->get('security.context')->isGranted('ROLE_ADMIN')) {
+    		throw new AccessDeniedException();
+    	}else{
+	    	$usr= $this->get('security.context')->getToken()->getUser();
+	    	$userName = $usr->getName();
+	        return $this->render('TeAyudoBundle:admin:adminIndex.html.twig', 
+	        		array('pageTitle' => 'TeAyudo.org', 
+	        				'username' => $userName,
+	        				'newCycles'=>$this->getNewCycles(),
+	        				'newUsers'=>$this->getNewUsers(),
+	        				'activeUsers' => $this->getActiveUsers(),
+	        				'activeCycles' => $this->getActiveCycles(),
+	        				'error'=> $this->error,
+	        				'successMessage'=> $this->successMessage,
+	        				'denySuccessMessage'=>$this->denySuccessMessage
+	        		));
+    	}
     }
     
     public function approveUserAction(Request $request, $userId){
