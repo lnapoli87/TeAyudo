@@ -21,7 +21,7 @@
 	 <li><a	href="{{ path('_cycles') }}">Mis Ciclos</a></li>
 	 <li  class="active"><a href="{{ path('_userAccount') }}">Mi Cuenta</a></li>
 </ul>
-<span class="headHome"><a href="logout">Salir</a></span>
+<span class="headHome"><a href="{{ path('logout') }}">Salir</a></span>
 {% endblock %} 
 
 {%block content %} 
@@ -58,7 +58,8 @@
 					<div id="map_canvas" style="max-height: 430px"></div>
 				</div>
 	  </div>
-	  {{ form_widget(userForm.save) }}
+	  <div class="actionFormButtons"><a href="{{ path('_mainView') }}" class="registration-input">Volver</a>{{ form_widget(userForm.save) }}</div>
+	  
   {{ form_end(userForm) }}
 </div>
 <script type="text/javascript" src="{{ asset('bundles/TeAyudo/js/createCycle.js') }}">
