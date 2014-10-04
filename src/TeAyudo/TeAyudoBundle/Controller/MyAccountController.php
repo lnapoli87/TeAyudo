@@ -31,8 +31,8 @@ class MyAccountController extends Controller
     	->add('coords','hidden')
     	->add ( 'name', 'text' )
     	->add ( 'email', 'email' )
-    	->add('telephone','text')
-    	->add('cellphone','text')
+    	->add('telephone','text', array('required'=> false))
+    	->add('cellphone','text', array('required'=> false))
     	->add('file')
     	->add ( 'save', 'submit', array ('label' => 'Guardar Cambios' )
     	)->getForm ();

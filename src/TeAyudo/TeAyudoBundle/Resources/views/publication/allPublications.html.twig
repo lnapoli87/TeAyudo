@@ -1,4 +1,10 @@
 {% extends 'TeAyudoBundle:Default:base.html.twig' %} 
+{% block logoSection %}
+	<div class="logo img-thumbnail" style="margin-top: 67px;">
+		<img alt="teayudo.org"
+			src="{{ asset('bundles/TeAyudo/images/te-ayudo-logo-short.png') }}">
+	</div>
+{% endblock %}
 {% block middleAction %} 
 <center style="margin-top: 81px;">
 <button id="newCycleBtn" class="middleHeader btn btn-primary btn-lg"><h4 class="glyphicon glyphicon-plus"></h4>&nbsp;&nbsp;Crear un Nuevo Ciclo</button>

@@ -26,10 +26,12 @@
 		<div class="mainContainer container theme-showcase jumbotron">
 			<div class="row show-grid">
 				<div class="col-md-4">
-					<div class="logo img-thumbnail">
-						<img alt="teayudo.org"
-							src="{{ asset('bundles/TeAyudo/images/te-ayudo-logo.png') }}">
-					</div>
+					{% block logoSection %}
+						<div class="logo img-thumbnail">
+							<img alt="teayudo.org"
+								src="{{ asset('bundles/TeAyudo/images/te-ayudo-logo.png') }}">
+						</div>
+					{% endblock %}
 				</div>
 				<div class="col-md-4">{% block middleAction %} {% endblock %}</div>
 				
@@ -43,23 +45,5 @@
 			<br/>
 			<div class="footer">&copy; lucasnapoli 2014</div>
 		</div>
-		
-		
-		<script type="text/javascript">
-		toastr.options = {
-				  "closeButton": false,
-				  "debug": false,
-				  "positionClass": "toast-top-right",
-				  "onclick": null,
-				  "showDuration": "300",
-				  "hideDuration": "1000",
-				  "timeOut": "5000",
-				  "extendedTimeOut": "1000",
-				  "showEasing": "swing",
-				  "hideEasing": "linear",
-				  "showMethod": "fadeIn",
-				  "hideMethod": "fadeOut"
-				}
-		</script>
 </body>
 </html>

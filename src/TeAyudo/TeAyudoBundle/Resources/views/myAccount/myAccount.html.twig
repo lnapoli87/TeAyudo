@@ -1,4 +1,10 @@
-{% extends 'TeAyudoBundle:Default:base.html.twig' %} 
+{% extends 'TeAyudoBundle:Default:base.html.twig' %}
+{% block logoSection %}
+	<div class="logo img-thumbnail" style="margin-top: 67px;">
+		<img alt="teayudo.org"
+			src="{{ asset('bundles/TeAyudo/images/te-ayudo-logo-short.png') }}">
+	</div>
+{% endblock %} 
 {% block middleAction %} 
 <center style="margin-top: 81px;">
 <button id="newCycleBtn" class="middleHeader btn btn-primary btn-lg"><h4 class="glyphicon glyphicon-plus"></h4>&nbsp;&nbsp;Crear un Nuevo Ciclo</button>
@@ -11,10 +17,9 @@
 	<h4>{{ username }}</h5>
 </div>
 <ul class="nav nav-pills mainMenu">
-	 <li><a href="main">Inicio</a></li>
-	 <li><a	href="myCycles">Mis Ciclos</a></li>
-	 <li class="active"><a href="myAccount">Mi Cuenta</a>
-	 </li>
+	 <li><a href="{{ path('_mainView') }}">Inicio</a></li>
+	 <li><a	href="{{ path('_cycles') }}">Mis Ciclos</a></li>
+	 <li  class="active"><a href="{{ path('_userAccount') }}">Mi Cuenta</a></li>
 </ul>
 <span class="headHome"><a href="logout">Salir</a></span>
 {% endblock %} 
@@ -89,6 +94,11 @@ function readURL(input) {
         reader.readAsDataURL(input.files[0]);
     }
 };
+
+$("#newCycleBtn").click(function(e){
+	e.preventDefault();
+	window.location="./create";
+});
 
 {% if successMessage is not empty %}
 	toastr.success('{{ successMessage }}');
