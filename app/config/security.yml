@@ -36,6 +36,11 @@ security:
         secured_area:
             pattern: ^/
             anonymous: ~
+            remember_me:
+              key:      "%secret%"
+              lifetime: 31536000 # 365 days in seconds
+              path:     /
+              domain:   ~ # Defaults to the current domain from $_SERVER
             form_login:
               login_path: /home
               check_path: login_check

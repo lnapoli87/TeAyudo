@@ -9,7 +9,9 @@
 		</script>
 	{% endif %}
 	<input type="text" id="username" name="_username" value="{{ last_username }}" placeholder="Email" class="form-control registration-input"/>
- 	<input type="password" id="password" name="_password" placeholder="Contraseña" class="form-control registration-input"/> 
+ 	<input type="password" id="password" name="_password" placeholder="Contraseña" class="form-control registration-input"/>
+ 	<input type="checkbox" id="remember_me" name="_remember_me" checked />
+    <label for="remember_me">Recordarme</label> 
 	<input type="hidden" name="_target_path" value="/main" />
 	<button type="submit" class="btn btn-primary">Entrar</button>
 </form>
