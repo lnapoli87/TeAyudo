@@ -79,10 +79,10 @@
 								{% for cycle in newCycles %}
 								<tr>
 									<td>{{ cycle.id }}</td>
-									<td>{{ cycle.title }}</td>
-									<td>{{ cycle.description }}</td>
+									<td>{{ cycle.titleResume }}</td>
+									<td>{{ cycle.descriptionResume }}</td>
 									<td>{{ cycle.user.email }}</td>
-									<td>{{ cycle.title }}</td>
+									<td>{{ cycle.dateString }}</td>
 									<td><center>
 											<a href="{{ path('_publication', {cycleId: cycle.id}) }}"><span
 												class="glyphicon glyphicon-search"></span></a>
@@ -143,10 +143,10 @@
 								{% for cycle in activeCycles %}
 								<tr>
 									<td>{{ cycle.id }}</td>
-									<td>{{ cycle.title }}</td>
-									<td>{{ cycle.description }}</td>
+									<td>{{ cycle.titleResume }}</td>
+									<td>{{ cycle.descriptionResume }}</td>
 									<td>{{ cycle.user.email }}</td>
-									<td>{{ cycle.title }}</td>
+									<td>{{ cycle.dateString }}</td>
 									<td>
 										<center>
 											<a href="{{ path('_publication', {cycleId: cycle.id}) }}"><span
@@ -206,10 +206,10 @@
 								{% for cycle in deniedCycles %}
 								<tr>
 									<td>{{ cycle.id }}</td>
-									<td>{{ cycle.title }}</td>
-									<td>{{ cycle.description }}</td>
+									<td>{{ cycle.titleResume }}</td>
+									<td>{{ cycle.descriptionResume }}</td>
 									<td>{{ cycle.user.email }}</td>
-									<td>{{ cycle.title }}</td>
+									<td>{{ cycle.dateString }}</td>
 									<td>
 										<center>
 											<a href="{{ path('_publication', {cycleId: cycle.id}) }}"><span

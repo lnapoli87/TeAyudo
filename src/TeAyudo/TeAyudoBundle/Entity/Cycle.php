@@ -157,6 +157,14 @@ class Cycle {
     public function getDateString(){
     	return $this->date->format('d-m-Y H:i');
     }
+    public function getTitleResume(){
+    	return substr($this->title, 0, 30);
+    }
+    public function getDescriptionResume(){
+    	return substr($this->description, 0, 30);
+    }
+    
+    
 	public function getContactData() {
 		return $this->contactData;
 	}

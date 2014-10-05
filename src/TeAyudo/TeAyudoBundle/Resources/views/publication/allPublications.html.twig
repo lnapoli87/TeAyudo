@@ -50,8 +50,8 @@
           		</tr>
   				{% for cycle in neededCycles %}
   				<tr>
-        			<td>{{ cycle.title }}</td>
-        			<td>{{ cycle.description }}</td>
+        			<td>{{ cycle.titleResume }}</td>
+        			<td>{{ cycle.descriptionResume }}</td>
         			<td>{{ cycle.dateString }}</td>
         			{% if cycle.ended == true %}
 						<td>Si</td>
@@ -75,8 +75,8 @@
           		</tr>
   				{% for cycle in offeredCycles %}
   				<tr>
-        			<td>{{ cycle.title }}</td>
-        			<td>{{ cycle.description }}</td>
+        			<td>{{ cycle.titleResume }}</td>
+        			<td>{{ cycle.descriptionResume }}</td>
         			<td>{{ cycle.dateString }}</td>
         			{% if cycle.ended == true %}
 						<td>Si</td>
@@ -100,8 +100,8 @@
           		</tr>
   				{% for cycle in allCycles %}
   				<tr>
-        			<td>{{ cycle.title }}</td>
-        			<td>{{ cycle.description }}</td>
+        			<td>{{ cycle.titleResume }}</td>
+        			<td>{{ cycle.descriptionResume }}</td>
         			<td>{{ cycle.dateString }}</td>
         			{% if cycle.ended == true %}
 						<td>Si</td>
